@@ -1,11 +1,16 @@
 {
-  "name": "sitemap-ping",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "@pandelis/sitemap-ping",
+  "version": "0.0.2",
+  "main": "ping.js",
   "license": "MIT",
   "dependencies": {
     "argparse": "^1.0.10",
     "axios": "^0.18.0",
     "sitemap-stream-parser": "^1.4.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PandelisZ/sitemap-ping.git"
+  },
+  "author": "Pandelis Zembashis <info@pandelis.me>"
 }

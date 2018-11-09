@@ -21,9 +21,11 @@ var parser = new ArgumentParser({
     }
   );
   parser.addArgument(
-    [ '-p', '--parallel' ],
+    [ '-a', '--async' ],
     {
-      help: 'How many GET requests to make in parallel'
+      help: 'How many GET requests to make asynchronously in parallel',
+      type: 'int',
+      nargs: 1
     }
   );
 
@@ -56,8 +58,10 @@ async function asyncForEach(array, callback, concurrency) {
     }
 
     for (let index = 0; index < array.length; index += concurrency) {
-        for(let thread = 0; thread < concurrency; thread ++) {
-            await callback(array[index + thread], index + thread, array)
+        for(let thread = 0; (thread < concurrency); thread ++) {
+            if (index + thread < array.length) {
+                await callback(array[index + thread], index + thread, array)
+            }   
         }
     }
   }
